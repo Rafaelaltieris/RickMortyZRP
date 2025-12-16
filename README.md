@@ -66,10 +66,12 @@ Models/External → DTOs da API externa
 GET /api/episodes/{id}
 ```
 
-** Exemplo de Requisição **
+### Exemplo de Requisição
+
+```http
 GET /api/episodes/1
 
-** Exemplo de Resposta **
+Exemplo de Resposta
 {
   "id": 1,
   "name": "Pilot",
@@ -86,4 +88,5 @@ GET /api/episodes/1
     }
   ]
 }
+
 
