@@ -126,26 +126,26 @@ dotnet run
 ````
 ### Tecnologias Utilizadas
 
-ASP.NET Core Web API
+- ASP.NET Core Web API
 
-HttpClientFactory
+- HttpClientFactory
 
-Swagger (Swashbuckle)
+- Swagger (Swashbuckle)
 
-IMemoryCache
+- IMemoryCache
 
-Rick and Morty Public API
+- Rick and Morty Public API
 
 ### Observações Finais
 
-O front-end não consome diretamente a Rick and Morty API
+- O front-end não consome diretamente a Rick and Morty API
 
-Qualquer mudança na API externa fica isolada na camada de Client
+- Qualquer mudança na API externa fica isolada na camada de Client
 
-O contrato exposto pelo BFF permanece estável para o front-end
+- O contrato exposto pelo BFF permanece estável para o front-end
 
-O projeto foi estruturado seguindo boas práticas de arquitetura
+- O projeto foi estruturado seguindo boas práticas de arquitetura
 
 ### Autor
 
-Projeto desenvolvido como desafio técnico, com foco em arquitetura limpa, boas práticas e integração com APIs externas.
+- Projeto desenvolvido como desafio técnico, com foco em arquitetura limpa, boas práticas e integração com APIs externas.
