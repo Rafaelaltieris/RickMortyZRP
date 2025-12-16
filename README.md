@@ -149,7 +149,7 @@ Pré-requisitos
 - Node.js 18+
 - Conexão com a internet
 
-Executar o Backend
+## Executar o Backend
 
 ```
 cd backend
@@ -157,7 +157,7 @@ dotnet restore
 dotnet run
 ```
 
-Executar o Frontend
+## Executar o Frontend
 
 ````
 cd frontend
@@ -165,7 +165,7 @@ npm install
 npm run dev
 ````
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 BackEnd
 - ASP.NET Core Web API
@@ -179,7 +179,7 @@ FrontEnd
 - Vite
 - Fetch API
 
-### Observações Finais
+## Observações Finais
 
 - O front-end não consome diretamente a Rick and Morty API
 - Qualquer mudança na API externa fica isolada no Client
@@ -187,7 +187,7 @@ FrontEnd
 - Projeto estruturado seguindo boas práticas de arquitetura
 - Commits organizados e incrementais
 
-### Autor
+## Autor
 Projeto desenvolvido como desafio técnico, com foco em:
 
 - Arquitetura limpa
