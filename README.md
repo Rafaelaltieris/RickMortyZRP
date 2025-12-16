@@ -6,7 +6,7 @@ O objetivo é evitar que o front-end consuma diretamente a API externa, centrali
 
 ---
 
-## 📌 Conceito: Backend for Frontend (BFF)
+## Conceito: Backend for Frontend (BFF)
 
 O **BFF (Backend for Frontend)** é uma camada intermediária entre o front-end e APIs externas.
 
@@ -27,7 +27,7 @@ O BFF é responsável por:
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 - Consumo de episódios da Rick and Morty API
 - Retorno **apenas dos personagens do episódio**
@@ -39,7 +39,7 @@ O BFF é responsável por:
 
 ---
 
-## 🧱 Arquitetura e Boas Práticas
+## Arquitetura e Boas Práticas
 
 Controllers/ → Camada HTTP (endpoints)
 Services/ → Regras de negócio
@@ -90,7 +90,7 @@ GET /api/episodes/1
 
 ```
 
-## ⚡ Otimizações Implementadas
+## Otimizações Implementadas
 
 - **Batch request de personagens** utilizando o endpoint `/character/1,2,3`, reduzindo o número de chamadas externas
 - **Cache em memória** com `IMemoryCache` para evitar chamadas repetidas à API externa
@@ -100,7 +100,7 @@ GET /api/episodes/1
 
 ---
 
-## 🧪 Swagger
+## Swagger
 
 A API possui documentação interativa via Swagger.
 
@@ -110,7 +110,7 @@ http://localhost:{porta}/swagger
 
 ---
 
-## ▶️ Como Executar o Projeto
+## Como Executar o Projeto
 
 ### Pré-requisitos
 
@@ -124,7 +124,7 @@ dotnet restore
 dotnet run
 
 ````
-🛠 Tecnologias Utilizadas
+### Tecnologias Utilizadas
 
 ASP.NET Core Web API
 
@@ -136,7 +136,7 @@ IMemoryCache
 
 Rick and Morty Public API
 
-📚 Observações Finais
+### Observações Finais
 
 O front-end não consome diretamente a Rick and Morty API
 
@@ -146,6 +146,6 @@ O contrato exposto pelo BFF permanece estável para o front-end
 
 O projeto foi estruturado seguindo boas práticas de arquitetura
 
-👤 Autor
+### Autor
 
 Projeto desenvolvido como desafio técnico, com foco em arquitetura limpa, boas práticas e integração com APIs externas.
