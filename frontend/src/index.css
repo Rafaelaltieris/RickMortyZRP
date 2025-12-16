@@ -34,18 +34,28 @@ input, button {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
+  gap: 16px;
 }
 
 .character {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   background: rgba(0,0,0,0.3);
-  padding: 10px;
-  border-radius: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  align-items: center;
+}
+
+.character-meta {
+  margin-top: 4px;
+  display: block;
+  opacity: 0.8;
+  font-size: 13px;
 }
 
 .character img {
-  width: 48px;
-  border-radius: 8px;
+  width: 55px;       
+  height: 55px;
+  border-radius: 12px;
+  object-fit: cover;
 }
