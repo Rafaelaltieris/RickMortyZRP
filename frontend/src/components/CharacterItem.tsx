@@ -6,7 +6,7 @@ export function CharacterItem({ character }: { character: Character }) {
       <img src={character.image} alt={character.name} />
       <div>
         <strong>{character.name}</strong>
-        <span>
+        <span className="character-meta">
           {character.status} • {character.species}
         </span>
       </div>
