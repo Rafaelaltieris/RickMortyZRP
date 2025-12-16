@@ -1,4 +1,4 @@
-﻿using RickMortyZRP.Clients;
+﻿    using RickMortyZRP.Clients;
 using RickMortyZRP.Models.Api;
 
 namespace RickMortyZRP.Services
@@ -26,8 +26,9 @@ namespace RickMortyZRP.Services
                 ? []
                 : await _client.GetCharactersByIdsAsync(ids, ct);
 
-            var ordered = characters
+            var orderedCharacters = characters
                 .OrderBy(c => c.Name, StringComparer.OrdinalIgnoreCase)
+                .ThenBy(c => c.Id)
                 .Select(c => new CharacterResponse
                 {
                     Id = c.Id,
@@ -45,7 +46,7 @@ namespace RickMortyZRP.Services
                 AirDate = episode.AirDate,
                 EpisodeCode = episode.Episode,
                 SourceSystem = "RickAndMorty",
-                Characters = ordered
+                Characters = orderedCharacters
             };
         }
     }
