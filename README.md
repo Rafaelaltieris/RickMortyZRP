@@ -13,9 +13,9 @@ O **BFF (Backend for Frontend)** é uma camada intermediária entre o front-end 
 Neste projeto:
 
 Front-end
-↓
+→
 RickMortyZRP (BFF)
-↓
+→
 Rick and Morty Public API
 
 O BFF é responsável por:
@@ -88,4 +88,64 @@ GET /api/episodes/1
   ]
 }
 
+```
 
+## ⚡ Otimizações Implementadas
+
+- **Batch request de personagens** utilizando o endpoint `/character/1,2,3`, reduzindo o número de chamadas externas
+- **Cache em memória** com `IMemoryCache` para evitar chamadas repetidas à API externa
+- Uso de **CancellationToken** para permitir o cancelamento de requisições
+- **Separação entre DTOs externos e modelos de resposta da API**, evitando vazamento de contrato
+- **Redução do acoplamento** com a API externa por meio da camada de Client
+
+---
+
+## 🧪 Swagger
+
+A API possui documentação interativa via Swagger.
+
+Após rodar o projeto, acesse:
+http://localhost:{porta}/swagger
+
+
+---
+
+## ▶️ Como Executar o Projeto
+
+### Pré-requisitos
+
+- .NET 8 ou superior
+- Conexão com a internet (API pública)
+
+### Executar a aplicação
+
+```bash
+dotnet restore
+dotnet run
+
+````
+🛠 Tecnologias Utilizadas
+
+ASP.NET Core Web API
+
+HttpClientFactory
+
+Swagger (Swashbuckle)
+
+IMemoryCache
+
+Rick and Morty Public API
+
+📚 Observações Finais
+
+O front-end não consome diretamente a Rick and Morty API
+
+Qualquer mudança na API externa fica isolada na camada de Client
+
+O contrato exposto pelo BFF permanece estável para o front-end
+
+O projeto foi estruturado seguindo boas práticas de arquitetura
+
+👤 Autor
+
+Projeto desenvolvido como desafio técnico, com foco em arquitetura limpa, boas práticas e integração com APIs externas.
