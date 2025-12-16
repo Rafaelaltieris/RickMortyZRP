@@ -112,6 +112,10 @@ ipch/
 *.VC.db
 *.VC.VC.opendb
 
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
 # Visual Studio profiler
 *.psess
 *.vsp
