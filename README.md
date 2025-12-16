@@ -71,7 +71,6 @@ GET /api/episodes/{id}
 ```http
 GET /api/episodes/1
 
-Exemplo de Resposta
 {
   "id": 1,
   "name": "Pilot",
