@@ -17,10 +17,20 @@ namespace RickMortyZRP.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id, CancellationToken ct)
         {
-            var result = await _service.GetEpisodeWithCharactersAsync(id, ct);
-            if (result is null) return NotFound(new { message = "Episode not found" });
+            try
+            {
+                var result = await _service.GetEpisodeWithCharactersAsync(id, ct);
+                return Ok(result);
+            }
+            catch (TaskCanceledException) when (!ct.IsCancellationRequested)
+            {
+                return StatusCode(504, "Timeout ao consultar a API externa.");
+            }
+            catch (TaskCanceledException)
+            {
+                return StatusCode(499, "Request cancelada pelo cliente.");
+            }
 
-            return Ok(result);
         }
     }
 }
