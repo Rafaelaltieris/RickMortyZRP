@@ -107,45 +107,90 @@ A API possui documentação interativa via Swagger.
 Após rodar o projeto, acesse:
 http://localhost:{porta}/swagger
 
-
 ---
 
-## Como Executar o Projeto
-
-### Pré-requisitos
-
-- .NET 8 ou superior
-- Conexão com a internet (API pública)
-
-### Executar a aplicação
-
-```bash
-dotnet restore
-dotnet run
-
-````
 ### Tecnologias Utilizadas
 
+### Frontend — React + TypeScript
+
+O front-end foi desenvolvido em React com TypeScript, consumindo exclusivamente o BFF, sem acesso direto à API externa.
+
+### Funcionalidades do Frontend
+- Busca de episódios pelo ID
+- Exibição das informações do episódio
+- Listagem de personagens ordenados alfabeticamente
+- Layout responsivo e organizado
+- Destaque visual para status do personagem (Alive / Dead / Unknown)
+- Tratamento de loading e erro
+- Cancelamento automático de requisições
+
+### Estrutura do Frontend
+
+src/
+├── components/   → Componentes visuais
+├── hooks/        → Hooks de dados (useEpisode)
+├── services/     → Client HTTP (fetch)
+├── types/        → Contratos da API (BFF)
+├── App.tsx
+└── index.css
+
+### Boas práticas utilizadas
+
+- Separação de responsabilidades
+- Tipagem forte com TypeScript
+- Isolamento da comunicação HTTP
+- Hooks para controle de estado assíncrono
+- Layout simples e legível para avaliação técnica
+
+## Como Executar o Projeto
+Pré-requisitos
+
+- .NET 8 ou superior
+- Node.js 18+
+- Conexão com a internet
+
+Executar o Backend
+
+```
+cd backend
+dotnet restore
+dotnet run
+```
+
+Executar o Frontend
+
+````
+cd frontend
+npm install
+npm run dev
+````
+
+Tecnologias Utilizadas
+
+BackEnd
 - ASP.NET Core Web API
-
 - HttpClientFactory
-
+- IMemoryCache
 - Swagger (Swashbuckle)
 
-- IMemoryCache
-
-- Rick and Morty Public API
+FrontEnd
+- React
+- TypeScript
+- Vite
+- Fetch API
 
 ### Observações Finais
 
 - O front-end não consome diretamente a Rick and Morty API
-
-- Qualquer mudança na API externa fica isolada na camada de Client
-
-- O contrato exposto pelo BFF permanece estável para o front-end
-
-- O projeto foi estruturado seguindo boas práticas de arquitetura
+- Qualquer mudança na API externa fica isolada no Client
+- O contrato exposto pelo BFF permanece estável
+- Projeto estruturado seguindo boas práticas de arquitetura
+- Commits organizados e incrementais
 
 ### Autor
+Projeto desenvolvido como desafio técnico, com foco em:
 
-- Projeto desenvolvido como desafio técnico, com foco em arquitetura limpa, boas práticas e integração com APIs externas.
+- Arquitetura limpa
+- Boas práticas
+- Integração com APIs externas
+- Organização de código e commits
