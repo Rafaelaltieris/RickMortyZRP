@@ -23,7 +23,7 @@ builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient<IRickMortyApiClient, RickMortyApiClient>(client =>
 {
     client.BaseAddress = new Uri("https://rickandmortyapi.com/api/");
-    client.Timeout = TimeSpan.FromSeconds(10);
+    client.Timeout = TimeSpan.FromSeconds(30);
 });
 
 builder.Services.AddScoped<IEpisodeService, EpisodeService>();
