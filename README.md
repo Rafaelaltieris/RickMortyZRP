@@ -46,7 +46,7 @@ The project follows a layered architecture to ensure separation of concerns:
 
 ---
 
-## 🔗 Available Endpoint
+##  Available Endpoint
 
 ### Fetch Episode with Sorted Characters
 
@@ -59,6 +59,7 @@ GET /api/episodes/1
 ````
 
 Sample Response
+```http
 JSON
 {
   "id": 1,
@@ -76,76 +77,81 @@ JSON
     }
   ]
 }
-⚡ Performance Optimizations
-Batch Character Requests: Utilizes the /character/1,2,3 endpoint to minimize round-trips.
+````
 
-In-Memory Cache: Uses IMemoryCache to store frequent results and respect external API rate limits.
+##  Performance Optimizations
 
-Cancellation Tokens: Supports CancellationToken to allow requests to be aborted, saving server resources.
+- **Batch Character Requests**  
+  Utilizes the `/character/1,2,3` endpoint to minimize round-trips.
 
-Contract Isolation: Strict separation between external DTOs and internal API models prevents breaking changes if the third-party API updates its schema.
+- **In-Memory Cache**  
+  Uses `IMemoryCache` to store frequent results and respect external API rate limits.
 
-⚛️ Frontend — React + TypeScript
-The frontend was developed using React and TypeScript, designed to consume only the BFF.
+- **Cancellation Tokens**  
+  Supports `CancellationToken` to allow requests to be aborted, saving server resources.
 
-Frontend Features
-Dynamic Search: Fetch episodes by ID.
+- **Contract Isolation**  
+  Strict separation between external DTOs and internal API models prevents breaking changes if the third-party API updates its schema.
 
-Detailed View: Displays episode info and a list of sorted characters.
+---
 
-Visual Indicators: Color-coded status (Alive / Dead / Unknown).
+##  Frontend — React + TypeScript
 
-State Management: Handles loading, error states, and empty results.
+The frontend was developed using **React** and **TypeScript**, designed to consume only the BFF.
 
-Responsive Design: Mobile-friendly layout.
+###  Frontend Features
 
-Frontend Structure
-Plaintext
+- **Dynamic Search**  
+  Fetch episodes by ID.
+
+- **Detailed View**  
+  Displays episode info and a list of sorted characters.
+
+- **Visual Indicators**  
+  Color-coded status (Alive / Dead / Unknown).
+
+- **State Management**  
+  Handles loading, error states, and empty results.
+
+- **Responsive Design**  
+  Mobile-friendly layout.
+
+---
+
+##  Frontend Structure
 src/
-├── components/   # UI Components
-├── hooks/        # Custom hooks (e.g., useEpisode)
-├── services/     # HTTP Client (Fetch/Axios wrapper)
-├── types/        # TypeScript Interfaces (BFF Contracts)
+├── components/ # UI Components
+├── hooks/ # Custom hooks (e.g., useEpisode)
+├── services/ # HTTP Client (Fetch/Axios wrapper)
+├── types/ # TypeScript Interfaces (BFF Contracts)
 ├── App.tsx
 └── index.css
-🚀 Getting Started
-Prerequisites
-.NET 8 SDK or higher
 
-Node.js 18+
+---
 
-Running the Backend
-Bash
+## 🚀 Getting Started
+
+### 📋 Prerequisites
+
+- .NET 8 SDK or higher  
+- Node.js 18+
+
+---
+
+### ▶️ Running the Backend
+
+```bash
 cd backend
 dotnet restore
 dotnet run
-Running the Frontend
-Bash
+```
+
+---
+
+### ▶️ Running the Frontend
+
+```bash
 cd frontend
 npm install
 npm run dev
-🛠️ Tech Stack
-Backend
-
-ASP.NET Core Web API
-
-HttpClientFactory
-
-IMemoryCache
-
-Swagger / OpenAPI
-
-Frontend
-
-React
-
-TypeScript
-
-Vite
-
-CSS Modules / Tailwind
-
-📝 Final Remarks
-This project was built focusing on Clean Architecture and Scalability. By isolating external communication within a BFF, the frontend remains lightweight and resilient to external API fluctuations.
-
-Author: Developed as a technical challenge focused on high-quality integration and architectural best practices.
+```
