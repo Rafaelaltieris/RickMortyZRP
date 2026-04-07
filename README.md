@@ -1,76 +1,62 @@
 # Rick & Morty Episodes BFF API
 
-Este projeto implementa um **Backend for Frontend (BFF)** em **ASP.NET Core**, responsável por intermediar o consumo da **Rick and Morty API** e expor um endpoint próprio, padronizado e otimizado para o front-end.
+This project implements a **Backend for Frontend (BFF)** using **ASP.NET Core**. It acts as an intermediary for consuming the **Rick and Morty API**, exposing a standardized and optimized endpoint specifically tailored for the frontend.
 
-O objetivo é evitar que o front-end consuma diretamente a API externa, centralizando regras de negócio, normalização de dados e otimizações no backend.
-
----
-
-## Conceito: Backend for Frontend (BFF)
-
-O **BFF (Backend for Frontend)** é uma camada intermediária entre o front-end e APIs externas.
-
-Neste projeto:
-
-Front-end
-→
-RickMortyZRP (BFF)
-→
-Rick and Morty Public API
-
-O BFF é responsável por:
-- Centralizar a integração com a API externa
-- Padronizar o formato de resposta
-- Aplicar regras de negócio
-- Otimizar chamadas externas
-- Proteger o front-end de mudanças na API de terceiros
+The primary goal is to prevent the frontend from consuming the external API directly, centralizing business logic, data normalization, and performance optimizations within the backend.
 
 ---
 
-## Funcionalidades
+## 🏗️ Concept: Backend for Frontend (BFF)
 
-- Consumo de episódios da Rick and Morty API
-- Retorno **apenas dos personagens do episódio**
-- Busca de personagens em **batch** (1 request para vários IDs)
-- Ordenação dos personagens **em ordem alfabética (A–Z)**
-- Padronização da resposta para o front-end
-- Cache em memória para reduzir chamadas externas
-- Documentação interativa via Swagger
+A **BFF (Backend for Frontend)** is an intermediate layer between the frontend and external APIs.
 
----
+In this project:
+`Frontend` → `RickAndMortyBFF (This Project)` → `Rick and Morty Public API`
 
-## Arquitetura e Boas Práticas
-
-Controllers/ → Camada HTTP (endpoints)
-Services/ → Regras de negócio
-Clients/ → Integração com APIs externas
-Models/Api → Contratos de resposta da API
-Models/External → DTOs da API externa
-
-
-### Responsabilidades das camadas
-
-- **Controllers**: expõem os endpoints HTTP e retornam status codes adequados
-- **Services**: concentram a lógica do negócio e orquestram os dados
-- **Clients**: encapsulam o consumo da Rick and Morty API
-- **Models/Api**: definem o contrato estável retornado ao front-end
-- **Models/External**: representam o formato da API de terceiros
+The BFF is responsible for:
+- **Centralizing integration** with the external API.
+- **Standardizing** the response format for the UI.
+- **Applying business logic** (e.g., sorting and filtering).
+- **Optimizing external calls** (batching and caching).
+- **Decoupling** the frontend from third-party API changes.
 
 ---
 
-## 🔗 Endpoint Disponível
+## ✨ Features
 
-### Buscar episódio com personagens ordenados
+- **Episode Consumption**: Fetches episode data from the Rick and Morty API.
+- **Character Filtering**: Returns only the characters relevant to a specific episode.
+- **Batch Processing**: Retrieves characters using batch requests (1 request for multiple IDs) to improve performance.
+- **Alphabetical Sorting**: Automatically sorts characters from **A to Z**.
+- **Data Normalization**: Provides a clean, standardized contract to the frontend.
+- **Memory Caching**: Implements `IMemoryCache` to reduce redundant external calls.
+- **Interactive Documentation**: Full Swagger/OpenAPI support.
+
+---
+
+## 📂 Architecture & Best Practices
+
+The project follows a layered architecture to ensure separation of concerns:
+
+- **Controllers/**: HTTP Layer (Endpoints).
+- **Services/**: Business logic and data orchestration.
+- **Clients/**: Encapsulation of external API consumption (HttpClient).
+- **Models/Api**: Stable response contracts returned to the frontend.
+- **Models/External**: DTOs representing the third-party API schema.
+
+---
+
+## 🔗 Available Endpoint
+
+### Fetch Episode with Sorted Characters
 
 ```http
 GET /api/episodes/{id}
-```
-
-### Exemplo de Requisição
-
-```http
+Sample Request
 GET /api/episodes/1
-
+````
+Sample Response
+JSON
 {
   "id": 1,
   "name": "Pilot",
@@ -83,114 +69,80 @@ GET /api/episodes/1
       "name": "Beth Smith",
       "status": "Alive",
       "species": "Human",
-      "image": "https://rickandmortyapi.com/api/character/avatar/38.jpeg"
+      "image": "[https://rickandmortyapi.com/api/character/avatar/38.jpeg](https://rickandmortyapi.com/api/character/avatar/38.jpeg)"
     }
   ]
 }
+⚡ Performance Optimizations
+Batch Character Requests: Utilizes the /character/1,2,3 endpoint to minimize round-trips.
 
-```
+In-Memory Cache: Uses IMemoryCache to store frequent results and respect external API rate limits.
 
-## Otimizações Implementadas
+Cancellation Tokens: Supports CancellationToken to allow requests to be aborted, saving server resources.
 
-- **Batch request de personagens** utilizando o endpoint `/character/1,2,3`, reduzindo o número de chamadas externas
-- **Cache em memória** com `IMemoryCache` para evitar chamadas repetidas à API externa
-- Uso de **CancellationToken** para permitir o cancelamento de requisições
-- **Separação entre DTOs externos e modelos de resposta da API**, evitando vazamento de contrato
-- **Redução do acoplamento** com a API externa por meio da camada de Client
+Contract Isolation: Strict separation between external DTOs and internal API models prevents breaking changes if the third-party API updates its schema.
 
----
+⚛️ Frontend — React + TypeScript
+The frontend was developed using React and TypeScript, designed to consume only the BFF.
 
-## Swagger
+Frontend Features
+Dynamic Search: Fetch episodes by ID.
 
-A API possui documentação interativa via Swagger.
+Detailed View: Displays episode info and a list of sorted characters.
 
-Após rodar o projeto, acesse:
-http://localhost:{porta}/swagger
+Visual Indicators: Color-coded status (Alive / Dead / Unknown).
 
----
+State Management: Handles loading, error states, and empty results.
 
-### Tecnologias Utilizadas
+Responsive Design: Mobile-friendly layout.
 
-### Frontend — React + TypeScript
-
-O front-end foi desenvolvido em React com TypeScript, consumindo exclusivamente o BFF, sem acesso direto à API externa.
-
-### Funcionalidades do Frontend
-- Busca de episódios pelo ID
-- Exibição das informações do episódio
-- Listagem de personagens ordenados alfabeticamente
-- Layout responsivo e organizado
-- Destaque visual para status do personagem (Alive / Dead / Unknown)
-- Tratamento de loading e erro
-- Cancelamento automático de requisições
-
-### Estrutura do Frontend
-
+Frontend Structure
+Plaintext
 src/
-├── components/   → Componentes visuais
-├── hooks/        → Hooks de dados (useEpisode)
-├── services/     → Client HTTP (fetch)
-├── types/        → Contratos da API (BFF)
+├── components/   # UI Components
+├── hooks/        # Custom hooks (e.g., useEpisode)
+├── services/     # HTTP Client (Fetch/Axios wrapper)
+├── types/        # TypeScript Interfaces (BFF Contracts)
 ├── App.tsx
 └── index.css
+🚀 Getting Started
+Prerequisites
+.NET 8 SDK or higher
 
-### Boas práticas utilizadas
+Node.js 18+
 
-- Separação de responsabilidades
-- Tipagem forte com TypeScript
-- Isolamento da comunicação HTTP
-- Hooks para controle de estado assíncrono
-- Layout simples e legível para avaliação técnica
-
-## Como Executar o Projeto
-Pré-requisitos
-
-- .NET 8 ou superior
-- Node.js 18+
-- Conexão com a internet
-
-## Executar o Backend
-
-```
+Running the Backend
+Bash
 cd backend
 dotnet restore
 dotnet run
-```
-
-## Executar o Frontend
-
-````
+Running the Frontend
+Bash
 cd frontend
 npm install
 npm run dev
-````
+🛠️ Tech Stack
+Backend
 
-## Tecnologias Utilizadas
+ASP.NET Core Web API
 
-BackEnd
-- ASP.NET Core Web API
-- HttpClientFactory
-- IMemoryCache
-- Swagger (Swashbuckle)
+HttpClientFactory
 
-FrontEnd
-- React
-- TypeScript
-- Vite
-- Fetch API
+IMemoryCache
 
-## Observações Finais
+Swagger / OpenAPI
 
-- O front-end não consome diretamente a Rick and Morty API
-- Qualquer mudança na API externa fica isolada no Client
-- O contrato exposto pelo BFF permanece estável
-- Projeto estruturado seguindo boas práticas de arquitetura
-- Commits organizados e incrementais
+Frontend
 
-## Autor
-Projeto desenvolvido como desafio técnico, com foco em:
+React
 
-- Arquitetura limpa
-- Boas práticas
-- Integração com APIs externas
-- Organização de código e commits
+TypeScript
+
+Vite
+
+CSS Modules / Tailwind
+
+📝 Final Remarks
+This project was built focusing on Clean Architecture and Scalability. By isolating external communication within a BFF, the frontend remains lightweight and resilient to external API fluctuations.
+
+Author: Developed as a technical challenge focused on high-quality integration and architectural best practices.
