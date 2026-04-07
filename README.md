@@ -131,16 +131,16 @@ src/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 📋 Prerequisites
+### Prerequisites
 
 - .NET 9 SDK or higher  
 - Node.js 18+
 
 ---
 
-### ▶️ Running the Backend
+### Running the Backend
 
 ```bash
 cd backend
@@ -150,7 +150,7 @@ dotnet run
 
 ---
 
-### ▶️ Running the Frontend
+### Running the Frontend
 
 ```bash
 cd frontend
