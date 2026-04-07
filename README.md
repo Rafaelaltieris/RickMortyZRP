@@ -119,13 +119,15 @@ The frontend was developed using **React** and **TypeScript**, designed to consu
 ---
 
 ##  Frontend Structure
+```plaintext
 src/
-├── components/ # UI Components
-├── hooks/ # Custom hooks (e.g., useEpisode)
-├── services/ # HTTP Client (Fetch/Axios wrapper)
-├── types/ # TypeScript Interfaces (BFF Contracts)
+├── components/   # UI Components
+├── hooks/        # Custom hooks (e.g., useEpisode)
+├── services/     # HTTP Client (Fetch/Axios wrapper)
+├── types/        # TypeScript Interfaces (BFF Contracts)
 ├── App.tsx
 └── index.css
+````
 
 ---
 
@@ -133,7 +135,7 @@ src/
 
 ### 📋 Prerequisites
 
-- .NET 8 SDK or higher  
+- .NET 9 SDK or higher  
 - Node.js 18+
 
 ---
