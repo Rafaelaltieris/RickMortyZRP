@@ -6,7 +6,7 @@ The primary goal is to prevent the frontend from consuming the external API dire
 
 ---
 
-## 🏗️ Concept: Backend for Frontend (BFF)
+## Concept: Backend for Frontend (BFF)
 
 A **BFF (Backend for Frontend)** is an intermediate layer between the frontend and external APIs.
 
@@ -22,7 +22,7 @@ The BFF is responsible for:
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Episode Consumption**: Fetches episode data from the Rick and Morty API.
 - **Character Filtering**: Returns only the characters relevant to a specific episode.
@@ -34,7 +34,7 @@ The BFF is responsible for:
 
 ---
 
-## 📂 Architecture & Best Practices
+##  Architecture & Best Practices
 
 The project follows a layered architecture to ensure separation of concerns:
 
@@ -52,9 +52,12 @@ The project follows a layered architecture to ensure separation of concerns:
 
 ```http
 GET /api/episodes/{id}
+````
 Sample Request
+```http
 GET /api/episodes/1
 ````
+
 Sample Response
 JSON
 {
